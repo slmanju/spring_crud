@@ -31,10 +31,11 @@ public class LoggingHandler {
         try {
             Object result = joinPoint.proceed();
             long elapsedTime = System.currentTimeMillis() - start;
+            String message = className + "." + methodName + "(" + args + ") : " + elapsedTime + "ms";
             if (logger.isDebugEnabled()) {
-                logger.debug(className + "." + methodName + "(" + args + ") : " + elapsedTime + "ms");
+                logger.debug(message);
             } else {
-                logger.info(className + "." + methodName + "(" + args + ") : " + elapsedTime + "ms");
+                logger.info(message);
             }
             return result;
         } catch (Exception e) {
