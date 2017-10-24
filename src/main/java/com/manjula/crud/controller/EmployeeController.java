@@ -37,7 +37,6 @@ public class EmployeeController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(EmployeeView view) {
-        System.out.println(view);
         employeeService.save(view);
         return "redirect:/employee";
     }
