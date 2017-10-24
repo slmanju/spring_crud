@@ -26,15 +26,15 @@ public class LoggingHandler {
     public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
         long start = System.currentTimeMillis();
         String args = Arrays.toString(joinPoint.getArgs());
+        String className = joinPoint.getSignature().getDeclaringTypeName();
+        String methodName = joinPoint.getSignature().getName();
         try {
-            String className = joinPoint.getSignature().getDeclaringTypeName();
-            String methodName = joinPoint.getSignature().getName();
             Object result = joinPoint.proceed();
             long elapsedTime = System.currentTimeMillis() - start;
             logger.debug(className + "." + methodName + "(" + args + ") : " + elapsedTime + "ms");
             return result;
         } catch (Exception e) {
-            logger.error("Exception " + e.getMessage() + " in " + joinPoint.getSignature().getName() + "(" + args + ")");
+            logger.error("Exception " + e.getMessage() + " in " + className + "." + methodName + "(" + args + ")");
             throw e;
         }
     }
