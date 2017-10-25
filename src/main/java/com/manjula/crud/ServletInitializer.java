@@ -1,4 +1,4 @@
-package com.manjula.crud.config;
+package com.manjula.crud;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
