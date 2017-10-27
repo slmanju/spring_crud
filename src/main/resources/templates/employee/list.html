@@ -6,11 +6,13 @@
     <title>Employees : View all</title>
 </head>
 <body>
-<h3 layout:fragment="header">Employees : View all</h3>
-<div layout:fragment="content" class="container">
+<div layout:fragment="header">
+    Employees : View all
     <div class="pull-right">
-        <a th:href="@{/employee/save}">Create Employee</a>
+        <a th:href="@{/employee/save}" class="btn btn-default">Create Employee</a>
     </div>
+</div>
+<div layout:fragment="content">
     <table class="table table-bordered table-striped">
         <thead>
         <tr>

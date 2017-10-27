@@ -14,4 +14,6 @@ public interface EmployeeService {
 
     List<Employee> findAll();
 
+    EmployeeView findByUsername(String username);
+
 }

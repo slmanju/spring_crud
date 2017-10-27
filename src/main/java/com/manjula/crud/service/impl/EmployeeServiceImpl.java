@@ -5,10 +5,12 @@ import com.manjula.crud.repository.EmployeeRepository;
 import com.manjula.crud.service.EmployeeService;
 import com.manjula.crud.view.EmployeeView;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by manjula on 10/23/17.
@@ -19,15 +21,24 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     private EmployeeRepository employeeRepository;
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public void save(EmployeeView view) {
+        view.setPassword(passwordEncoder.encode(view.getPassword()));
         employeeRepository.save(Employee.valueOf(view));
     }
 
     @Override
     public List<Employee> findAll() {
         return employeeRepository.findAll();
+    }
+
+    @Override
+    public EmployeeView findByUsername(String username) {
+        Optional<Employee> employee = employeeRepository.findByUsername(username);
+        return employee.map(Employee::view).orElse(null);
     }
 
 }

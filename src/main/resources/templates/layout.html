@@ -8,15 +8,21 @@
 </head>
 <body>
 <div class="container">
-    <div class="navbar">
-        <div class="navbar-inner">
-            <ul class="nav">
+    <nav class="navbar navbar-default navbar-expand-md fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Hello</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a th:href="@{/}" href="index.html">Home</a></li>
                 <li><a th:href="@{/employee}" href="employee/list.html">Employees</a></li>
             </ul>
         </div>
+    </nav>
+    <div class="panel panel-default">
+        <div class="panel-heading"><div layout:fragment="header">Layout</div></div>
+        <div class="panel-body"><div layout:fragment="content">Fake content</div></div>
     </div>
-    <h3 layout:fragment="header">Layout</h3>
-    <div layout:fragment="content">Fake content</div>
 </div>
 </body>
 </html>
