@@ -2,6 +2,7 @@ package com.manjula.crud.service.impl;
 
 import com.manjula.crud.service.EmployeeService;
 import com.manjula.crud.view.EmployeeView;
+import com.manjula.crud.view.RoleView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -33,13 +34,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        /*for (Role role : user.getRoles()){
+        for (RoleView role : user.getRoles()) {
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
-        }*/
-
-        grantedAuthorities.add(new SimpleGrantedAuthority("USER"));
-        grantedAuthorities.add(new SimpleGrantedAuthority("ADMIN"));
-
+        }
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
     }
 

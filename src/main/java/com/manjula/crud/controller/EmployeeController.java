@@ -32,6 +32,7 @@ public class EmployeeController {
     @RequestMapping(value = "/save", method = RequestMethod.GET)
     public String index(Model model) {
         model.addAttribute("employee", EmployeeView.instance());
+        model.addAttribute("roles", employeeService.findAllRoles());
         return "employee/save";
     }
 

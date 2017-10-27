@@ -8,9 +8,7 @@
 <body>
 <div layout:fragment="header">
     Employees : View all
-    <div class="pull-right">
-        <a th:href="@{/employee/save}" class="btn btn-default">Create Employee</a>
-    </div>
+    <a th:href="@{/employee/save}" class="pull-right btn">Create Employee</a>
 </div>
 <div layout:fragment="content">
     <table class="table table-bordered table-striped">
